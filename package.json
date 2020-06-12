@@ -1,0 +1,27 @@
+{
+  "name": "abm",
+  "version": "1.0.0",
+  "description": "proyecto test ABM en Node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josemariaduarte/testEdge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josemariaduarte/testEdge/issues"
+  },
+  "homepage": "https://github.com/josemariaduarte/testEdge#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
