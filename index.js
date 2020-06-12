@@ -5,7 +5,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-
+import router from './routes';
 
 const app=express();
 //
@@ -37,8 +37,8 @@ const swaggerOptions = {
   swaggerDefinition: {
     info: {
       version: "1.0.0",
-      title: "Customer API",
-      description: "Customer API Information",
+      title: "Categoria Articulo API",
+      description: "",
       contact: {
         name: "Amazing Developer"
       },
@@ -55,17 +55,17 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // Routes
 /**
  * @swagger
- * /customers:
+ * /api/categoria/list:
  *  get:
+ *    title: "Categorias"
  *    description: Use to request all customers
  *    responses:
  *      '200':
  *        description: A successful response
  */
-app.get('/customers', (req, res) =>{
-  res.send('Customer results');
-});
 
+
+app.use('/api', router);
 
 // el puerto para correr
 app.set('port', process.env.PORT || 3000)
