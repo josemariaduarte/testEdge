@@ -62,6 +62,12 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *    responses:
  *      '200':
  *        description: A successful response
+ *        schema: { $ref: "#/definitions/Categorias" }
+ *      '400':
+ *        description: Bad Request
+ *      '500':
+ *        description: Ocurrio un Error
+ * 
  */
 
 
@@ -73,3 +79,39 @@ app.set('port', process.env.PORT || 3000)
 app.listen(app.get('port'), ()=>{
   console.log('Corriendo en el puerto' + app.get('port'))
 })
+
+
+
+
+
+/** 
+* @swagger
+
+  definitions: {
+  id: {
+    properties: {
+      uuid: {type: "string"}
+    }
+  },
+  Categoria: {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "descripcion": {
+                    "type": "string"
+                }
+            }
+        },
+  "Categorias": {
+    "type": "array",
+    "items": { "$ref": "#/definitions/Categoria" }
+  }
+  
+  }
+
+*/

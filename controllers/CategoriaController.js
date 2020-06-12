@@ -32,7 +32,7 @@ export default {
         try {
             let valor=req.query.valor;
             const reg=await models.Categoria.find({$or:[{'nombre':new RegExp(valor, 'i')},{'descripcion':new RegExp(valor, 'i')}]},
-             {createdAt:0}).sort({'createdAt':-1});
+             {createdAt:0, __v:0, estado:0}).sort({'createdAt':-1});
             res.status(200).json(reg);
         } catch(e){
             res.status(500).send({
