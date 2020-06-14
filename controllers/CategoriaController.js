@@ -13,7 +13,7 @@ export default {
     },
     query: async (req,res,next) => {
         try {
-            const reg=await models.Categoria.findOne({_id:req.query._id});
+            const reg=await models.Categoria.findOne({_id:req.params.id}, {createdAt:0, __v:0, estado:0});
             if (!reg){
                 res.status(404).send({
                     message: 'El registro no existe'
@@ -43,7 +43,10 @@ export default {
     },
     update: async (req,res,next) => {
         try {
-            const reg = await models.Categoria.findByIdAndUpdate({_id:req.body._id},{nombre:req.body.nombre,descripcion:req.body.descripcion});
+            const reg = await models.Categoria.findByIdAndUpdate(
+                {_id:req.params.id},
+                {nombre:req.body.nombre},
+                {descripcion:req.body.descripcion});
             res.status(200).json(reg);
         } catch(e){
             res.status(500).send({

@@ -67,6 +67,19 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *        description: Bad Request
  *      '500':
  *        description: Ocurrio un Error
+ * /api/categoria/query:
+ * post:
+ *    title: "Obtener una categoria"
+ *    description: "oril"
+ *    parameters:
+ *      name: id
+ *      type: number
+ *      required: true
+ *    responses:
+ *      '200':
+ *        description: A successfull response
+ *      '500':
+ *        description: Ocurrio un Error
  * 
  */
 
