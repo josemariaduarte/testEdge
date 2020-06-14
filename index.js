@@ -17,7 +17,8 @@ mongoose.connect(
   {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false
   }).then(
     mongoose => console.log('conectado en el puerto 27017')
   ).catch(
@@ -90,7 +91,7 @@ app.use('/api', router);
 app.set('port', process.env.PORT || 3000)
 
 app.listen(app.get('port'), ()=>{
-  console.log('Corriendo en el puerto' + app.get('port'))
+  console.log('Corriendo en el puerto ' + app.get('port'))
 })
 
 
