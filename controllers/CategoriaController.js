@@ -11,6 +11,10 @@ export default {
             next(e);
         }
     },
+    /*
+    * funcion que permite obtener una categoria 
+    * @params {id} id de la categoria
+    */
     query: async (req,res,next) => {
         try {
             const reg=await models.Categoria.findOne({_id:req.params.id}, {createdAt:0, __v:0, estado:0});
@@ -28,11 +32,15 @@ export default {
             next(e);
         }
     },
+    /*
+    * funcion para listar las categorias
+    * @parms {valor}: permite buscar por nombre o descripcion ( no obligatorio)
+    */
     list: async (req,res,next) => {
         try {
             let valor=req.query.valor;
             const reg=await models.Categoria.find({$or:[{'nombre':new RegExp(valor, 'i')},{'descripcion':new RegExp(valor, 'i')}]},
-             {createdAt:0, __v:0, estado:0}).sort({'createdAt':-1});
+             {createdAt:0, __v:0}).sort({'createdAt':-1});
             res.status(200).json(reg);
         } catch(e){
             res.status(500).send({
