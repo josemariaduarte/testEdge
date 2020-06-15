@@ -6,7 +6,7 @@ export default {
       res.status(200).json(reg);
     } catch (e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
@@ -14,7 +14,7 @@ export default {
   // permite obtener el articulo en base al id
   query: async (req,res,next) => {
     try {
-      const reg=await models.Articulo.findOne({_id:req.query._id})
+      const reg=await models.Articulo.findOne({_id:req.params.id})
         .populate('categoria',{nombre:1});
       if (!reg){
         res.status(404).send({
@@ -25,7 +25,7 @@ export default {
       }
     } catch(e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
@@ -40,7 +40,7 @@ export default {
       res.status(200).json(reg);
     } catch(e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
@@ -49,7 +49,6 @@ export default {
   // se recibe como parametro el id del articulo
   update: async (req,res,next) => {
     try {
-      console.log(req.body)
       const reg = await models.Articulo.findByIdAndUpdate({_id:req.params.id},
         {categoria:req.body.categoria,
         codigo:req.body.codigo,
@@ -60,30 +59,40 @@ export default {
       res.status(200).json(reg);
     } catch(e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
   },
-  
+  remove: async (req,res,next) => {
+    try {
+        const reg = await models.Articulo.findByIdAndDelete({_id:req.params.id});
+        res.status(200).json(reg);
+    } catch(e){
+        res.status(500).send({
+            message:'Ocurrió un error'
+        });
+        next(e);
+    }
+  },
   activate: async (req,res,next) => {
     try {
-      const reg = await models.Articulo.findByIdAndUpdate({_id:req.body._id},{estado:1});
+      const reg = await models.Articulo.findByIdAndUpdate({_id:req.params.id},{estado:1});
       res.status(200).json(reg);
     } catch(e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
   },
   deactivate:async (req,res,next) => {
     try {
-      const reg = await models.Articulo.findByIdAndUpdate({_id:req.body._id},{estado:0});
+      const reg = await models.Articulo.findByIdAndUpdate({_id:req.params.id},{estado:0});
       res.status(200).json(reg);
     } catch(e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
