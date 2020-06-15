@@ -3,7 +3,7 @@ import usuarioController from '../controllers/UsuarioController';
 import auth from '../middlewares/auth';
 const router=routerx();
 
-router.post('/add',usuarioController.add);
+router.post('/add', auth.verifyUsuario, usuarioController.add);
 router.get('/:id',auth.verifyUsuario,usuarioController.query);
 router.get('/',auth.verifyUsuario,usuarioController.list);
 router.put('/:id',auth.verifyUsuario,usuarioController.update);

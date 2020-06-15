@@ -27,7 +27,7 @@ export default {
       }
     } catch(e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
@@ -40,7 +40,7 @@ export default {
       res.status(200).json(reg);
     } catch(e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
@@ -75,7 +75,7 @@ export default {
       res.status(200).json(reg);
     } catch(e){
       res.status(500).send({
-        message:'OcurriÃ³ un error'
+        message:'Ocurrio un error'
       });
       next(e);
     }
