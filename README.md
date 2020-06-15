@@ -2,6 +2,18 @@
 ABM  de Categorias y Articulos en Node js:
 Creamos un proyecto para la creacion, edicion, busqueda, activacion y desactivacion de Categorias y Articulos.
 
+## Correr la Web
+Descargar el repositorio, y abrir el directorio con la consola de Node (es necesario tener instalado https://nodejs.org/)
+
+### Instalar dependencias
+Ejecutar la siguiente linea de comandos para instalar las dependencias
+ npm install
+
+Ejecutar la siguiente linea de comandos para correr el sitio
+  npm run dev
+
+Por ultimo abrir en el navegador
+ http://localhost:3000/
 
 
 
